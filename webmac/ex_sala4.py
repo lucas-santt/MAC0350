@@ -180,3 +180,9 @@ async def getUser(idx: int = -1):
         return {"nome": users[idx].name, "idade": users[idx].age}
 
     return users
+
+@app.delete("/users/")
+async def deleteUsers():
+    users.clear()
+
+    return "Todos os usuários deletados!"
