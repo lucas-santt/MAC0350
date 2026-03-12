@@ -165,7 +165,6 @@ class User(BaseModel):
     nome: str
     idade: int
 
-
 users = []
 
 @app.post("/users/")

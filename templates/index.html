@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.min.js" integrity="sha384-/TgkGk7p307TH7EXJDuUlgG3Ce1UVolAOFopFekQkkXihi5u/6OCvVKyz1W+idaz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/json-enc.js"></script>
+    <title>Requests</title>
+    <script>
+        async function criarUsuario() {
+            const dados = {
+                nome: document.getElementById('c_nome').value,
+                senha: document.getElementById('c_senha').value,
+                bio: document.getElementById('c_bio').value
+            }
+
+            const resposta = await fetch('/usuario', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(dados)
+            })
+
+            if(resposta.ok) {
+                const resultado = await resposta.json();
+                alert("Usuário criado")
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="secao-interacao">
+        <h1>Criar usuário</h1>
+        <form>  
+            <label for="c_nome">Nome</label>
+            <input type="text" name="nome" id="c_nome">
+            <label for="c_senha">Senha</label>
+            <input type="text" name="senha" id="c_senha">
+            <label for="c_bio">Bio</label>
+            <input type="text" name="bio" id="c_bio">
+            <button type="button" onclick="criarUsuario()">Criar Usuário</button>
+        </form>
+    </div>
+    <a href="/login">Página de login</a>
+</body>
+</html>

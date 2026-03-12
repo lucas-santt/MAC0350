@@ -1,0 +1,39 @@
+<html>
+<head>
+    <script>
+        async function logarUsuario() {
+            const dados = {
+                nome: document.getElementById('l_nome').value,
+                senha: document.getElementById('l_senha').value
+            }
+
+            const resposta = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(dados)
+            })
+
+            if(resposta.ok) {
+                const resultado = await resposta.json();
+                alert("Usuário logado")
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <h1>Logar</h1>
+        <form>
+            <label for="l_nome">Nome</label>
+            <input type="text" name="nome" id="l_nome">
+            <label for="l_senha">Senha</label>
+            <input type="text" name="senha" id="l_senha">
+            <button type="button" onclick="logarUsuario()">Logar Usuário</button>
+        </form>
+    </div>
+    <a href="/">Voltar</a>
+    <a href="/profile">Perfil</a>
+</body>
+</html>
