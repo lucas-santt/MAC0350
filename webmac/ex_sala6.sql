@@ -8,6 +8,7 @@ CREATE TABLE cliente (
     cliente_id INTEGER PRIMARY KEY,
     nome TEXT NOT NULL,
     contato TEXT NOT NULL,
+    endereco_id INTEGER NOT NULL,
     FOREIGN KEY (endereco_id) REFERENCES endereco(endereco_id)
 );
 
@@ -34,6 +35,7 @@ CREATE TABLE fabricante (
 CREATE TABLE produto (
     produto_id TEXT NOT NULL,
     nome TEXT NOT NULL,
+    vendedor_id INTEGER NOT NULL,
     FOREIGN KEY (vendedor_id) REFERENCES vendedor(vendedor_id)
 );
 
